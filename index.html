@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Opportunities</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4a8e1;
+    }
+
+    #container {
+      display: flex;
+      height: 100vh;
+    }
+
+    #left-panel {
+      background: #e84040;
+      color: #fff;
+      width: 200px;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    #left-panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #left-panel li {
+      margin-bottom: 10px;
+    }
+
+    #left-panel a {
+      display: block;
+      text-decoration: none;
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    #left-panel a:hover {
+      background-color: #555;
+    }
+
+    #left-panel a.active {
+      background-color: #555;
+    }
+
+    #content {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      color: #333;
+    }
+
+    #content h2 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #333;
+    }
+
+    #content p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .job-content {
+      display: none;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #f16c8d;
+    }
+
+    .button-primary {
+      background-color: #007bff;
+    }
+
+    .button-primary:hover {
+      background-color: #0056b3;
+    }
+
+    #footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .toggle-button-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      width: 40px;
+      height: 40px;
+    }
+
+    .toggle-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .toggle-button span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: #b8d46b;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-button span:before,
+    .toggle-button span:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #3ac859;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-button span:before {
+      top: -8px;
+    }
+
+    .toggle-button span:after {
+      bottom: -8px;
+    }
+
+    .hide-panel #left-panel {
+      transform: translateX(-200px);
+    }
+
+    .hide-panel .toggle-button span:first-child {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .hide-panel .toggle-button span:last-child {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .hide-panel .toggle-button span:before {
+      transform: rotate(90deg);
+    }
+
+    .hide-panel .toggle-button span:after {
+      transform: rotate(-90deg);
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="left-panel">
+      <ul>
+        <li><a href="#" onclick="showContent('home')" class="active">Home</a></li>
+        <li><a href="#" onclick="showContent('contact')">Contact</a></li>
+        <li><a href="#" onclick="showContent('information')">Information</a></li>
+        <li><a href="#" onclick="showContent('guide')">Guide</a></li>
+        <li><a href="#" onclick="showContent('jobs')">Jobs</a></li>
+        <li><a href="#" onclick="showContent('services')">Services</a></li>
+        <li><a href="#" onclick="showContent('about')">About</a></li>
+        <li><a href="#" onclick="showContent('blog')">Blog</a></li>
+        <!-- Add more options here -->
+      </ul>
+    </div>
+    <div class="toggle-button-container">
+      <button id="toggle-button" class="toggle-button" onclick="togglePanel()">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="content">
+      <div id="home-content" class="job-content" style="display: block;">
+        <h2>Welcome to our Job Opportunities Website!</h2>
+        <p>Find your dream job in various fields:</p>
+        <ul>
+          <li>Field 1</li>
+          <li>Field 2</li>
+          <li>Field 3</li>
+          <li>Field 4</li>
+          <li>Field 5</li>
+          <!-- Add more fields here -->
+        </ul>
+        <p>Explore our job listings and take the next step towards your career!</p>
+        <a href="#" class="button button-primary">View Job Listings</a>
+      </div>
+      <div id="contact-content" class="job-content">
+        <h2>Contact Us</h2>
+        <ul>
+          <li>Email: info@example.com</li>
+          <li>Phone: 123-456-7890</li>
+          <li>Address: 123 Street, City, Country</li>
+        </ul>
+      </div>
+      <div id="information-content" class="job-content">
+        <h2>Useful Information</h2>
+        <p>Here are some helpful resources and information:</p>
+        <ul>
+          <li>FAQs</li>
+          <li>Terms of Service</li>
+          <li>Privacy Policy</li>
+          <li>Guidelines</li>
+          <li>Support</li>
+          <!-- Add more information here -->
+        </ul>
+      </div>
+      <div id="guide-content" class="job-content">
+        <h2>User Guide</h2>
+        <p>Refer to the user guide for instructions on how to use our website:</p>
+        <ul>
+          <li>Getting Started</li>
+          <li>Searching for Jobs</li>
+          <li>Applying for Jobs</li>
+          <li>Managing Your Account</li>
+          <li>FAQs</li>
+          <!-- Add more guide sections here -->
+        </ul>
+      </div>
+      <div id="jobs-content" class="job-content">
+        <h2>Job Listings</h2>
+        <p>Explore our latest job opportunities:</p>
+        <ul>
+          <li>Job 1</li>
+          <li>Job 2</li>
+          <li>Job 3</li>
+          <li>Job 4</li>
+          <li>Job 5</li>
+          <!-- Add more job listings here -->
+        </ul>
+      </div>
+      <div id="services-content" class="job-content">
+        <h2>Our Services</h2>
+        <p>Discover the services we offer:</p>
+        <ul>
+          <li>Service 1</li>
+          <li>Service 2</li>
+          <li>Service 3</li>
+          <li>Service 4</li>
+          <li>Service 5</li>
+          <!-- Add more services here -->
+        </ul>
+      </div>
+      <div id="about-content" class="job-content">
+        <h2>About Us</h2>
+        <p>Learn more about our company and mission:</p>
+        <ul>
+          <li>Company History</li>
+          <li>Our Team</li>
+          <li>Mission and Vision</li>
+          <li>Testimonials</li>
+          <li>Careers</li>
+          <!-- Add more about sections here -->
+        </ul>
+      </div>
+      <div id="blog-content" class="job-content">
+        <h2>Blog</h2>
+        <p>Read our latest blog posts:</p>
+        <ul>
+          <li>Blog Post 1</li>
+          <li>Blog Post 2</li>
+          <li>Blog Post 3</li>
+          <!-- Add more blog posts here -->
+        </ul>
+      </div>
+      <!-- Add more job-content sections here -->
+    </div>
+  </div>
+  <footer id="footer">
+    <p>&copy; 2023 Job Opportunities. All rights reserved.</p>
+  </footer>
+  <script>
+    var panelVisible = true;
+    var leftPanel = document.getElementById('left-panel');
+    var toggleButton = document.getElementById('toggle-button');
+
+    function togglePanel() {
+      panelVisible = !panelVisible;
+      if (panelVisible) {
+        leftPanel.classList.remove('hide-panel');
+      } else {
+        leftPanel.classList.add('hide-panel');
+      }
+    }
+
+    function showContent(contentId) {
+      var contents = document.querySelectorAll('.job-content');
+      var links = document.querySelectorAll('#left-panel a');
+
+      for (var i = 0; i < contents.length; i++) {
+        contents[i].style.display = 'none';
+        links[i].classList.remove('active');
+      }
+
+      document.getElementById(contentId + '-content').style.display = 'block';
+      document.querySelector('#left-panel a[href="#' + contentId + '"]').classList.add('active');
+    }
+  </script>
+</body>
+</html>
